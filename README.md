@@ -6,357 +6,245 @@
 
 <head>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CalmCare - Your Peaceful Space</title>
+  <title>CalmCare</title>
 
-<style>
+  <style>
 
-* {
+    * {
 
-  box-sizing: border-box;
+      box-sizing: border-box;
 
-}
+    }
 
-body {
+    body {
 
-  margin: 0;
+      margin: 0;
 
-  padding: 28px 16px;
+      min-height: 100vh;
 
-  font-family: Arial, sans-serif;
+      display: flex;
 
-  background: linear-gradient(160deg, #eff9f4, #dcefe6);
+      align-items: center;
 
-  color: #28594d;
+      justify-content: center;
 
-}
+      padding: 20px;
 
-.container {
+      font-family: Arial, sans-serif;
 
-  max-width: 460px;
+      background: linear-gradient(135deg, #d8f3dc, #b7e4c7);
 
-  margin: 0 auto;
+      color: #24543b;
 
-}
+    }
 
-header {
+    .card {
 
-  display: flex;
+      width: 100%;
 
-  align-items: center;
+      max-width: 420px;
 
-  justify-content: space-between;
+      padding: 30px 22px;
 
-  margin-bottom: 30px;
+      text-align: center;
 
-}
+      background: white;
 
-.logo {
+      border-radius: 24px;
 
-  font-size: 27px;
+      box-shadow: 0 10px 30px rgba(36, 84, 59, 0.12);
 
-  font-weight: bold;
+    }
 
-}
+    h1 {
 
-.tagline {
+      margin-top: 0;
 
-  color: #65877a;
+      font-size: 32px;
 
-  font-size: 13px;
+    }
 
-  margin-top: 5px;
+    h2 {
 
-}
+      font-size: 23px;
 
-.leaf {
+    }
 
-  font-size: 38px;
+    p {
 
-}
+      line-height: 1.7;
 
-.hero {
+      color: #567363;
 
-  background: white;
+    }
 
-  border-radius: 28px;
+    .moods {
 
-  padding: 30px 22px;
+      display: flex;
 
-  text-align: center;
+      justify-content: center;
 
-  box-shadow: 0 12px 35px #bdd9cc80;
+      flex-wrap: wrap;
 
-}
+      gap: 8px;
 
-.hero-icon {
+      margin: 22px 0;
 
-  font-size: 58px;
+    }
 
-  margin: 5px 0 15px;
+    .moods button {
 
-}
+      padding: 12px;
 
-h1 {
+      border: 1px solid #cce3d2;
 
-  font-size: 30px;
+      border-radius: 14px;
 
-  line-height: 1.3;
+      background: #f4fbf5;
 
-  margin: 10px 0;
+      color: #24543b;
 
-}
+      font-size: 14px;
 
-.description {
+    }
 
-  color: #6c887c;
+    .moods button.selected {
 
-  line-height: 1.7;
+      background: #b7e4c7;
 
-  font-size: 15px;
+      border-color: #40916c;
 
-}
+    }
 
-h2 {
+    .calm-button {
 
-  font-size: 20px;
+      width: 100%;
 
-  margin: 28px 0 16px;
+      padding: 15px;
 
-}
+      border: none;
 
-.feelings {
+      border-radius: 14px;
 
-  display: grid;
+      background: #40916c;
 
-  grid-template-columns: repeat(3, 1fr);
+      color: white;
 
-  gap: 10px;
+      font-size: 17px;
 
-}
+      font-weight: bold;
 
-.feeling {
+    }
 
-  border: 2px solid transparent;
+    #message {
 
-  border-radius: 17px;
+      margin-top: 20px;
 
-  padding: 15px 4px;
+      font-weight: bold;
 
-  background: #f0f7f2;
+    }
 
-  color: #28594d;
+    footer {
 
-  font-size: 14px;
+      margin-top: 25px;
 
-  cursor: pointer;
+      font-size: 12px;
 
-}
+      color: #789181;
 
-.feeling span {
+    }
 
-  display: block;
-
-  font-size: 27px;
-
-  margin-bottom: 8px;
-
-}
-
-.feeling.selected {
-
-  border-color: #438f83;
-
-  background: #e1f2e9;
-
-}
-
-.main-button {
-
-  width: 100%;
-
-  margin-top: 24px;
-
-  padding: 17px;
-
-  border: none;
-
-  border-radius: 16px;
-
-  background: #438f83;
-
-  color: white;
-
-  font-size: 17px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-}
-
-#message {
-
-  line-height: 1.8;
-
-  color: #43816d;
-
-  font-size: 15px;
-
-}
-
-footer {
-
-  text-align: center;
-
-  padding: 24px 8px 8px;
-
-  color: #6c887c;
-
-  font-size: 13px;
-
-}
-
-</style>
+  </style>
 
 </head>
 
 <body>
 
-<div class="container">
+  <main class="card">
 
-  <header>
+    <h1>CalmCare 🌿</h1>
 
-    <div>
+    <h2>Take a moment for yourself</h2>
 
-      <div class="logo">CalmCare 🌿</div>
+    <p>You deserve peace, kindness, and a little time to breathe.</p>
 
-      <div class="tagline">Your peaceful space</div>
+    <h3>How are you feeling today?</h3>
 
-    </div>
+    <div class="moods">
 
-    <div class="leaf">☘️</div>
+      <button type="button" onclick="chooseMood('Happy', this)">😊 Happy</button>
 
-  </header>
+      <button type="button" onclick="chooseMood('Sad', this)">💙 Sad</button>
 
-  <main class="hero">
-
-    <div class="hero-icon">🌱</div>
-
-    <h1>Take a moment<br>for yourself</h1>
-
-    <p class="description">
-
-      Breathe deeply. Relax your mind.
-
-      You deserve a little peace today.
-
-    </p>
-
-    <h2>How are you feeling today?</h2>
-
-    <div class="feelings">
-
-      <button class="feeling"
-
-        onclick="chooseFeeling('Happy', this)">
-
-        <span>😊</span>Happy
-
-      </button>
-
-      <button class="feeling"
-
-        onclick="chooseFeeling('Sad', this)">
-
-        <span>🌧️</span>Sad
-
-      </button>
-
-      <button class="feeling"
-
-        onclick="chooseFeeling('Anxious', this)">
-
-        <span>💚</span>Anxious
-
-      </button>
+      <button type="button" onclick="chooseMood('Anxious', this)">🌧️ Anxious</button>
 
     </div>
 
-    <button class="main-button" onclick="showMessage()">
+    <button class="calm-button" type="button" onclick="findCalm()">
 
-      Find Calm ✨
+      Find Calm 💚
 
     </button>
 
-    <p id="message" aria-live="polite"></p>
+    <p id="message" aria-live="polite">
+
+      You are not alone. Take one gentle breath.
+
+    </p>
+
+    <footer>Made with care 💚 CalmCare</footer>
 
   </main>
 
-  <footer>
+  <script>
 
-    A little peace, just for you 💚
+    let selectedMood = "";
 
-  </footer>
+    function chooseMood(mood, button) {
 
-</div>
+      selectedMood = mood;
 
-<script>
+      document.querySelectorAll(".moods button").forEach(function(item) {
 
-let selectedFeeling = "";
+        item.classList.remove("selected");
 
-function chooseFeeling(feeling, button) {
+      });
 
-  selectedFeeling = feeling;
+      button.classList.add("selected");
 
-  document.querySelectorAll(".feeling").forEach(function(item) {
+      document.getElementById("message").textContent =
 
-    item.classList.remove("selected");
+        "Thank you for sharing. It is okay to feel " + mood.toLowerCase() + ". 💚";
 
-  });
+    }
 
-  button.classList.add("selected");
+    function findCalm() {
 
-  document.getElementById("message").textContent =
+      let message = "Breathe in slowly. Breathe out gently. You are doing your best. 💚";
 
-    "Thank you for checking in with yourself. 💚";
+      if (selectedMood === "Sad") {
 
-}
+        message = "Be gentle with yourself. You deserve love and care. 💚";
 
-function showMessage() {
+      } else if (selectedMood === "Anxious") {
 
-  let message =
+        message = "Relax your shoulders. Breathe slowly. Take one moment at a time. 🌿";
 
-    "Breathe in slowly. Breathe out gently. You are doing your best. 💚";
+      } else if (selectedMood === "Happy") {
 
-  if (selectedFeeling === "Sad") {
+        message = "Enjoy this happy moment. You deserve to feel good. 🌸";
 
-    message =
+      }
 
-      "Be gentle with yourself. You do not have to feel okay every moment. 💚";
+      document.getElementById("message").textContent = message;
 
-  } else if (selectedFeeling === "Anxious") {
+    }
 
-    message =
-
-      "Relax your shoulders. Breathe in slowly, then breathe out gently. Take one moment at a time. 💚";
-
-  } else if (selectedFeeling === "Happy") {
-
-    message =
-
-      "Enjoy this beautiful moment. Let yourself appreciate the good things around you. 💚";
-
-  }
-
-  document.getElementById("message").textContent = message;
-
-}
-
-</script>
+  </script>
 
 </body>
 
