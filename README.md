@@ -1,6 +1,297 @@
 
 
+
 <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CalmCare</title>
+
+<style>
+
+body {
+
+  margin: 0;
+
+  padding: 24px;
+
+  font-family: Arial, sans-serif;
+
+  background: #edf7f0;
+
+  color: #245440;
+
+  text-align: center;
+
+}
+
+main {
+
+  max-width: 500px;
+
+  margin: auto;
+
+}
+
+section {
+
+  background: white;
+
+  padding: 24px;
+
+  margin: 18px 0;
+
+  border-radius: 22px;
+
+  box-shadow: 0 4px 15px #0000000d;
+
+}
+
+h1 { color: #287451; }
+
+button {
+
+  background: #347c59;
+
+  color: white;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  padding: 13px 20px;
+
+  font-size: 16px;
+
+  margin: 6px;
+
+}
+
+textarea, select {
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #c9dfd0;
+
+  border-radius: 10px;
+
+  margin: 8px 0;
+
+  font-size: 16px;
+
+}
+
+#circle {
+
+  width: 110px;
+
+  height: 110px;
+
+  margin: 25px auto;
+
+  border-radius: 50%;
+
+  background: #a8d9b9;
+
+  display: grid;
+
+  place-items: center;
+
+  transition: transform 4s;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<h1>🌿 CalmCare</h1>
+
+<p>A little calm, one breath at a time.</p>
+
+<section>
+
+<h2>Your moment of peace</h2>
+
+<p id="message">Take a gentle breath.</p>
+
+<div id="circle">💚</div>
+
+<button onclick="breathe()">Find Calm</button>
+
+<button onclick="stopBreathing()">Stop</button>
+
+</section>
+
+<section>
+
+<h2>🌙 Sleep Check-in</h2>
+
+<select id="sleep">
+
+<option value="">How did you sleep?</option>
+
+<option>Less than 4 hours</option>
+
+<option>4–5 hours</option>
+
+<option>6–7 hours</option>
+
+<option>8 or more hours</option>
+
+</select>
+
+<button onclick="saveSleep()">Save Sleep</button>
+
+<p id="sleepResult"></p>
+
+</section>
+
+<section>
+
+<h2>💚 Kind Thoughts</h2>
+
+<textarea id="note" rows="4"
+
+placeholder="Write a kind thought for yourself..."></textarea>
+
+<button onclick="saveNote()">Save Note</button>
+
+<p id="noteResult"></p>
+
+</section>
+
+</main>
+
+<script>
+
+let timer;
+
+let running = false;
+
+function breathe() {
+
+  if (running) return;
+
+  running = true;
+
+  let inhale = true;
+
+  function cycle() {
+
+    if (!running) return;
+
+    document.getElementById("message").textContent =
+
+      inhale ? "Breathe in slowly..." : "Breathe out gently...";
+
+    document.getElementById("circle").style.transform =
+
+      inhale ? "scale(1.3)" : "scale(0.85)";
+
+    inhale = !inhale;
+
+    timer = setTimeout(cycle, inhale ? 4000 : 6000);
+
+  }
+
+  cycle();
+
+}
+
+function stopBreathing() {
+
+  running = false;
+
+  clearTimeout(timer);
+
+  document.getElementById("circle").style.transform = "scale(1)";
+
+  document.getElementById("message").textContent =
+
+    "Take a gentle breath. 💚";
+
+}
+
+function saveSleep() {
+
+  const value = document.getElementById("sleep").value;
+
+  if (!value) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Please choose an answer.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-sleep", value); } catch(e) {}
+
+  document.getElementById("sleepResult").textContent =
+
+    "Your sleep check-in is saved. 💚";
+
+}
+
+function saveNote() {
+
+  const value = document.getElementById("note").value.trim();
+
+  if (!value) {
+
+    document.getElementById("noteResult").textContent =
+
+      "Write a kind thought first.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-note", value); } catch(e) {}
+
+  document.getElementById("noteResult").textContent =
+
+    "Your kind thought is saved. 🌿";
+
+}
+
+try {
+
+  document.getElementById("note").value =
+
+    localStorage.getItem("calmcare-note") || "";
+
+  if (localStorage.getItem("calmcare-sleep")) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Previous check-in: " + localStorage.getItem("calmcare-sleep");
+
+  }
+
+} catch(e) {}
+
+</script>
+
+</body>
+
+</html>DOCTYPE html>
 
 <html lang="en">
 
@@ -249,3 +540,592 @@
 </body>
 
 </html>
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CalmCare</title>
+
+<style>
+
+body {
+
+  margin: 0;
+
+  padding: 24px;
+
+  font-family: Arial, sans-serif;
+
+  background: #edf7f0;
+
+  color: #245440;
+
+  text-align: center;
+
+}
+
+main {
+
+  max-width: 500px;
+
+  margin: auto;
+
+}
+
+section {
+
+  background: white;
+
+  padding: 24px;
+
+  margin: 18px 0;
+
+  border-radius: 22px;
+
+  box-shadow: 0 4px 15px #0000000d;
+
+}
+
+h1 { color: #287451; }
+
+button {
+
+  background: #347c59;
+
+  color: white;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  padding: 13px 20px;
+
+  font-size: 16px;
+
+  margin: 6px;
+
+}
+
+textarea, select {
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #c9dfd0;
+
+  border-radius: 10px;
+
+  margin: 8px 0;
+
+  font-size: 16px;
+
+}
+
+#circle {
+
+  width: 110px;
+
+  height: 110px;
+
+  margin: 25px auto;
+
+  border-radius: 50%;
+
+  background: #a8d9b9;
+
+  display: grid;
+
+  place-items: center;
+
+  transition: transform 4s;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<h1>🌿 CalmCare</h1>
+
+<p>A little calm, one breath at a time.</p>
+
+<section>
+
+<h2>Your moment of peace</h2>
+
+<p id="message">Take a gentle breath.</p>
+
+<div id="circle">💚</div>
+
+<button onclick="breathe()">Find Calm</button>
+
+<button onclick="stopBreathing()">Stop</button>
+
+</section>
+
+<section>
+
+<h2>🌙 Sleep Check-in</h2>
+
+<select id="sleep">
+
+<option value="">How did you sleep?</option>
+
+<option>Less than 4 hours</option>
+
+<option>4–5 hours</option>
+
+<option>6–7 hours</option>
+
+<option>8 or more hours</option>
+
+</select>
+
+<button onclick="saveSleep()">Save Sleep</button>
+
+<p id="sleepResult"></p>
+
+</section>
+
+<section>
+
+<h2>💚 Kind Thoughts</h2>
+
+<textarea id="note" rows="4"
+
+placeholder="Write a kind thought for yourself..."></textarea>
+
+<button onclick="saveNote()">Save Note</button>
+
+<p id="noteResult"></p>
+
+</section>
+
+</main>
+
+<script>
+
+let timer;
+
+let running = false;
+
+function breathe() {
+
+  if (running) return;
+
+  running = true;
+
+  let inhale = true;
+
+  function cycle() {
+
+    if (!running) return;
+
+    document.getElementById("message").textContent =
+
+      inhale ? "Breathe in slowly..." : "Breathe out gently...";
+
+    document.getElementById("circle").style.transform =
+
+      inhale ? "scale(1.3)" : "scale(0.85)";
+
+    inhale = !inhale;
+
+    timer = setTimeout(cycle, inhale ? 4000 : 6000);
+
+  }
+
+  cycle();
+
+}
+
+function stopBreathing() {
+
+  running = false;
+
+  clearTimeout(timer);
+
+  document.getElementById("circle").style.transform = "scale(1)";
+
+  document.getElementById("message").textContent =
+
+    "Take a gentle breath. 💚";
+
+}
+
+function saveSleep() {
+
+  const value = document.getElementById("sleep").value;
+
+  if (!value) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Please choose an answer.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-sleep", value); } catch(e) {}
+
+  document.getElementById("sleepResult").textContent =
+
+    "Your sleep check-in is saved. 💚";
+
+}
+
+function saveNote() {
+
+  const value = document.getElementById("note").value.trim();
+
+  if (!value) {
+
+    document.getElementById("noteResult").textContent =
+
+      "Write a kind thought first.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-note", value); } catch(e) {}
+
+  document.getElementById("noteResult").textContent =
+
+    "Your kind thought is saved. 🌿";
+
+}
+
+try {
+
+  document.getElementById("note").value =
+
+    localStorage.getItem("calmcare-note") || "";
+
+  if (localStorage.getItem("calmcare-sleep")) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Previous check-in: " + localStorage.getItem("calmcare-sleep");
+
+  }
+
+} catch(e) {}
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CalmCare</title>
+
+<style>
+
+body {
+
+  margin: 0;
+
+  padding: 24px;
+
+  font-family: Arial, sans-serif;
+
+  background: #edf7f0;
+
+  color: #245440;
+
+  text-align: center;
+
+}
+
+main {
+
+  max-width: 500px;
+
+  margin: auto;
+
+}
+
+section {
+
+  background: white;
+
+  padding: 24px;
+
+  margin: 18px 0;
+
+  border-radius: 22px;
+
+  box-shadow: 0 4px 15px #0000000d;
+
+}
+
+h1 { color: #287451; }
+
+button {
+
+  background: #347c59;
+
+  color: white;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  padding: 13px 20px;
+
+  font-size: 16px;
+
+  margin: 6px;
+
+}
+
+textarea, select {
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #c9dfd0;
+
+  border-radius: 10px;
+
+  margin: 8px 0;
+
+  font-size: 16px;
+
+}
+
+#circle {
+
+  width: 110px;
+
+  height: 110px;
+
+  margin: 25px auto;
+
+  border-radius: 50%;
+
+  background: #a8d9b9;
+
+  display: grid;
+
+  place-items: center;
+
+  transition: transform 4s;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<h1>🌿 CalmCare</h1>
+
+<p>A little calm, one breath at a time.</p>
+
+<section>
+
+<h2>Your moment of peace</h2>
+
+<p id="message">Take a gentle breath.</p>
+
+<div id="circle">💚</div>
+
+<button onclick="breathe()">Find Calm</button>
+
+<button onclick="stopBreathing()">Stop</button>
+
+</section>
+
+<section>
+
+<h2>🌙 Sleep Check-in</h2>
+
+<select id="sleep">
+
+<option value="">How did you sleep?</option>
+
+<option>Less than 4 hours</option>
+
+<option>4–5 hours</option>
+
+<option>6–7 hours</option>
+
+<option>8 or more hours</option>
+
+</select>
+
+<button onclick="saveSleep()">Save Sleep</button>
+
+<p id="sleepResult"></p>
+
+</section>
+
+<section>
+
+<h2>💚 Kind Thoughts</h2>
+
+<textarea id="note" rows="4"
+
+placeholder="Write a kind thought for yourself..."></textarea>
+
+<button onclick="saveNote()">Save Note</button>
+
+<p id="noteResult"></p>
+
+</section>
+
+</main>
+
+<script>
+
+let timer;
+
+let running = false;
+
+function breathe() {
+
+  if (running) return;
+
+  running = true;
+
+  let inhale = true;
+
+  function cycle() {
+
+    if (!running) return;
+
+    document.getElementById("message").textContent =
+
+      inhale ? "Breathe in slowly..." : "Breathe out gently...";
+
+    document.getElementById("circle").style.transform =
+
+      inhale ? "scale(1.3)" : "scale(0.85)";
+
+    inhale = !inhale;
+
+    timer = setTimeout(cycle, inhale ? 4000 : 6000);
+
+  }
+
+  cycle();
+
+}
+
+function stopBreathing() {
+
+  running = false;
+
+  clearTimeout(timer);
+
+  document.getElementById("circle").style.transform = "scale(1)";
+
+  document.getElementById("message").textContent =
+
+    "Take a gentle breath. 💚";
+
+}
+
+function saveSleep() {
+
+  const value = document.getElementById("sleep").value;
+
+  if (!value) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Please choose an answer.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-sleep", value); } catch(e) {}
+
+  document.getElementById("sleepResult").textContent =
+
+    "Your sleep check-in is saved. 💚";
+
+}
+
+function saveNote() {
+
+  const value = document.getElementById("note").value.trim();
+
+  if (!value) {
+
+    document.getElementById("noteResult").textContent =
+
+      "Write a kind thought first.";
+
+    return;
+
+  }
+
+  try { localStorage.setItem("calmcare-note", value); } catch(e) {}
+
+  document.getElementById("noteResult").textContent =
+
+    "Your kind thought is saved. 🌿";
+
+}
+
+try {
+
+  document.getElementById("note").value =
+
+    localStorage.getItem("calmcare-note") || "";
+
+  if (localStorage.getItem("calmcare-sleep")) {
+
+    document.getElementById("sleepResult").textContent =
+
+      "Previous check-in: " + localStorage.getItem("calmcare-sleep");
+
+  }
+
+} catch(e) {}
+
+</script>
+
+</body>
+
+</html>
+
